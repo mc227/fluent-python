@@ -51,7 +51,6 @@ def display_gif():
         close_requested = True
         root.destroy()
 
-
     close_requested = False
 
     root = tk.Tk()
@@ -63,9 +62,14 @@ def display_gif():
     gif_path = "./fluent-python/toph.gif"  # Change this path to the location of your GIF
     gif = Image.open(gif_path)
 
-    photo = ImageTk.PhotoImage(gif)
+    # Resize the image to be bigger
+    resized_gif = gif.resize((400, 400), Image.ANTIALIAS)
+
+    photo = ImageTk.PhotoImage(resized_gif)
     label = tk.Label(root, image=photo)
+    label.config(width=800, height=600)  # Adjust the width and height as needed
     label.pack()
+
 
     close_button = tk.Button(root, text="Close", command=close_app)
     close_button.pack()
