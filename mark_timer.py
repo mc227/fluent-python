@@ -1,6 +1,5 @@
 """
-chat gpt generated code
-with mc timer requirements
+chat gpt generated python script
 """
 import time
 import tkinter as tk
@@ -45,17 +44,23 @@ def display_gif():
             root.after(100, update_gif)
 
     def close_app():
+        """
+        docstring
+        """
         global close_requested
         close_requested = True
         root.destroy()
 
-    global close_requested
+
     close_requested = False
 
     root = tk.Tk()
     root.title("GIF Display")
 
-    gif_path = "./fluent-python/homer.gif"  # Change this path to the location of your GIF
+    # Make the window topmost
+    root.attributes('-topmost', True)
+
+    gif_path = "./fluent-python/toph.gif"  # Change this path to the location of your GIF
     gif = Image.open(gif_path)
 
     photo = ImageTk.PhotoImage(gif)
@@ -69,6 +74,6 @@ def display_gif():
     root.mainloop()
 
 if __name__ == "__main__":
-    minutes = 1
+    MINUTES = 5
     print("Countdown in progress...")
-    timer(minutes)
+    timer(MINUTES)
