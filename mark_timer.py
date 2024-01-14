@@ -1,14 +1,8 @@
-"""
-chat gpt generated python script
-"""
 import time
 import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageFilter
 
 def timer(minutes):
-    """
-    docstring
-    """
     seconds = minutes * 60
     start_time = time.time()
 
@@ -25,13 +19,7 @@ def timer(minutes):
     display_gif()
 
 def display_gif():
-    """
-    docstring
-    """
     def update_gif():
-        """
-        docstring
-        """
         try:
             gif.seek(gif.tell() + 1)
             photo = ImageTk.PhotoImage(gif)
@@ -44,13 +32,11 @@ def display_gif():
             root.after(100, update_gif)
 
     def close_app():
-        """
-        docstring
-        """
         global close_requested
         close_requested = True
         root.destroy()
 
+    global close_requested
     close_requested = False
 
     root = tk.Tk()
@@ -63,13 +49,12 @@ def display_gif():
     gif = Image.open(gif_path)
 
     # Resize the image to be bigger
-    resized_gif = gif.resize((400, 400), Image.ANTIALIAS)
+    resized_gif = gif.resize((400, 400), Image.LANCZOS)
 
     photo = ImageTk.PhotoImage(resized_gif)
     label = tk.Label(root, image=photo)
     label.config(width=800, height=600)  # Adjust the width and height as needed
     label.pack()
-
 
     close_button = tk.Button(root, text="Close", command=close_app)
     close_button.pack()
