@@ -1,6 +1,9 @@
+"""
+mark_timer.py
+"""
 import time
 import tkinter as tk
-from PIL import Image, ImageTk, ImageFilter
+from PIL import Image, ImageTk
 
 def timer(minutes):
     seconds = minutes * 60
