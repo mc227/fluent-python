@@ -16,7 +16,13 @@ def timer(minutes):
         if remaining_time == 0:
             break
 
-        print(f"Time remaining: {int(remaining_time / 60)}:{int(remaining_time % 60)}", end='\r')
+        minutes_display = int(remaining_time / 60)
+        seconds_display = int(remaining_time % 60)
+
+        # Zero-fill the minute and second values
+        display_str = f"Time remaining: {str(minutes_display).zfill(2)}:{str(seconds_display).zfill(2)}"
+        print(display_str, end='\r')
+        
         time.sleep(1)
 
     display_gif()
@@ -66,6 +72,6 @@ def display_gif():
     root.mainloop()
 
 if __name__ == "__main__":
-    MINUTES = 5
+    MINUTES = 0.5
     print("Countdown in progress...")
     timer(MINUTES)
